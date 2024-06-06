@@ -1,9 +1,7 @@
 import React from "react";
 import Bg from "../images/Background.svg";
 import Nav from "./Nav";
-import Bell from "../images/bell.svg";
-import Setting from "../images/setting.svg";
-import User from "../images/user.svg";
+import Header from "./Header";
 import Wallet from "../images/wallet.svg";
 import Global from "../images/global.svg";
 import Document from "../images/document.svg";
@@ -34,50 +32,11 @@ const Dashboard = () => {
   return (
     <div className="h-[1200px] relative bg-[#f7fafc]">
       <img src={Bg} alt="" />
-      <div className="absolute top-0 grid grid-cols-[300px_1600px]">
+      <div className="absolute top-0 grid grid-cols-[300px_1600px] tracking-wide">
         <Nav />
         <div className="grid gap-y-10">
           {/* header */}
-          <div className="flex justify-between items-start h-[50px] pt-4 pr-4">
-            <p className="text-white ">
-              <span>Pages/Dashboard</span>
-              <br />
-              <span className="text-lg font-bold">Dashboard</span>
-            </p>
-            <div className="flex items-center gap-4">
-              <div className="flex bg-white h-[40px] rounded-lg items-center px-2 gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="size-4"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-                  />
-                </svg>
-                <input
-                  type="text"
-                  placeholder="Type here..."
-                  className="focus:outline-none text-sm"
-                ></input>
-              </div>
-              <button className="flex text-white text-[12px] items-center font-bold gap-1">
-                <img src={User} alt="" />
-                Sign In
-              </button>
-              <button>
-                <img src={Setting} alt="" />
-              </button>
-              <button>
-                <img src={Bell} alt="" />
-              </button>
-            </div>
-          </div>
+          <Header name="Dashboard" />
           {/* card */}
           <div className="flex justify-between pr-4">
             <Card
@@ -105,8 +64,8 @@ const Dashboard = () => {
               percent="+8.12%"
             />
           </div>
-          {/* sales overview */}
           <div className="grid grid-cols-[69%_30%] grid-rows-[491px_350px] w-full pr-4 gap-x-4 gap-y-4">
+            {/* sales overview */}
             <div className="bg-[#151928] rounded-2xl p-4 grid">
               <p className="text-white pt-2">
                 <span className="font-bold text-[18px]">Sales overview</span>

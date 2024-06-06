@@ -19,7 +19,7 @@ const Nav = () => {
           <img src={Vector} alt="" />
         </div>
         {/* menu page */}
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-2 pt-6">
           <button className="flex items-center px-4 gap-2 w-[220px] h-[54px] shadow rounded-xl">
             <div className="p-3 bg-[#3182CE] rounded-xl">
               <img src={Home} alt="" className="w-[20px] h-[20px]" />
