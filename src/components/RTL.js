@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Nav from "./Nav";
 import Header from "./Header";
 import Bg from "../images/Background.svg";
+import BgDark from "../images/bgDark.svg";
 import Avatar2 from "../images/avatar2.svg";
 import Edit2 from "../images/edit2.svg";
+import EditWhite from "../images/editWhite.svg";
 import Overview from "../images/overview.svg";
 import Teams from "../images/teams.svg";
 import Projects from "../images/projects.svg";
@@ -17,6 +19,9 @@ import ProjectImg from "../images/project.svg";
 import Project2Img from "../images/project2.svg";
 import Project3Img from "../images/project3.svg";
 import Add from "../images/add.svg";
+import Avagroup from "../images/avagroup.svg";
+import Footer from "./Footer";
+import { DarkModeContext } from "./DarkModeContext";
 
 const Button = ({ image, name, bgcolor }) => (
   <button
@@ -67,41 +72,48 @@ const Conversation = ({ image, name, message }) => (
 
 const Project = ({ image, number, name, des }) => (
   <div className="flex flex-col">
-    <img src={image} alt="" />
-    <p className="flex flex-col">
-      <span className="text-[10px] text-[#A0AEC0]">Project #{number}</span>
-      <span className="text-[18px] text-[#2D3748] font-bold">{name}</span>
-      <span className="text-[12px] text-[#A0AEC0]">{des}</span>
-    </p>
-    <button
-      className="uppercase w-[110px] h-[35px] bg-[#2D3748] flex 
+    <img src={image} alt="" className="w-full h-[212px] object-cover" />
+    <div className="px-4">
+      <p className="flex flex-col py-4">
+        <span className="text-[10px] text-[#A0AEC0]">Project #{number}</span>
+        <span className="text-[18px] text-[#2D3748] font-bold">{name}</span>
+        <span className="text-[12px] text-[#A0AEC0]">{des}</span>
+      </p>
+      <div className="flex justify-between items-center">
+        <button
+          className="uppercase w-[110px] h-[35px] bg-[#2D3748] flex 
     justify-center items-center text-white text-[10px] font-bold rounded-lg"
-    >
-      view all
-    </button>
+        >
+          view all
+        </button>
+        <img src={Avagroup} alt="" />
+      </div>
+    </div>
   </div>
 );
 
 const RTL = () => {
+  const { darkMode } = useContext(DarkModeContext);
+
   return (
-    <div className="h-[1151px] relative bg-[#f7fafc]">
-      <img src={Bg} alt="" />
+    <div className="h-full relative bg-[#f7fafc]">
+      <img src={darkMode ? BgDark : Bg} alt="" />
       <div className="absolute top-0 grid grid-cols-[300px_1600px] tracking-wide">
         <Nav />
-        <div className="grid gap-y-7">
+        <div className="grid gap-y-7 py-4">
           {/* header */}
           <Header name="RTL" />
-          <div className="bg-white bg-opacity-85 bg w-[1584px] h-[113px] rounded-2xl p-4">
+          <div className="bg-white dark:bg-[#111C44] bg-opacity-85 bg w-[1584px] h-[113px] rounded-2xl p-4">
             <div className="flex justify-between items-center">
               <div className="flex gap-4 items-center">
                 <div className="relative">
                   <img src={Avatar2} alt="" />
-                  <div className="absolute bg-white w-[26px] h-[26px] flex justify-center items-center rounded-lg bottom-[-5px] right-[-5px]">
-                    <img src={Edit2} alt="" />
+                  <div className="dark:bg-[#0B1437] absolute bg-white w-[26px] h-[26px] flex justify-center items-center rounded-lg bottom-[-5px] right-[-5px]">
+                    <img src={darkMode ? EditWhite : Edit2} alt="" />
                   </div>
                 </div>
                 <p className="flex flex-col">
-                  <span className="text-[18px] text-[#2D3748] font-bold">
+                  <span className="dark:text-white text-[18px] text-[#2D3748] font-bold">
                     Alec Thompson
                   </span>
                   <span className="text-[14px] text-[#718096]">
@@ -196,7 +208,8 @@ const RTL = () => {
               />
             </div>
           </div>
-          <div className="bg-white w-[1584px] h-[486px] rounded-2xl">
+          {/* Projects */}
+          <div className="bg-white w-[1584px] h-[486px] rounded-2xl shadow">
             <p className="flex flex-col gap-2 px-4 py-6">
               <span className="text-[18px] font-bold text-[#2D3748]">
                 Projects
@@ -215,14 +228,14 @@ const RTL = () => {
               <Project
                 image={Project2Img}
                 number="2"
-                name="Modern"
-                des="As Uber works through a huge amount of internal management turmoil."
+                name="Scandinavian"
+                des="Music is something that every person has his or her own specific opinion about."
               />
               <Project
                 image={Project3Img}
                 number="3"
-                name="Modern"
-                des="As Uber works through a huge amount of internal management turmoil."
+                name="Minimalist"
+                des="Different people have different taste, and various types of music."
               />
               <button className="border-solid border-[1px] border-[#E2E8F0] rounded-2xl">
                 <div className="text-[#718096] text-[18px] flex flex-col justify-center items-center">
@@ -232,6 +245,8 @@ const RTL = () => {
               </button>
             </div>
           </div>
+          {/* footer */}
+          <Footer />
         </div>
       </div>
     </div>
