@@ -12,7 +12,7 @@ import Chart from "../images/chart.svg";
 import Footer from "./Footer";
 import { DarkModeContext } from "./DarkModeContext";
 
-const Card = ({ title, image, number, percent, darkMode }) => (
+const Card = ({ title, image, number, percent, darkMode, percentColor }) => (
   <div
     className={`${
       darkMode ? "bg-[#111C44]" : "bg-white"
@@ -35,7 +35,9 @@ const Card = ({ title, image, number, percent, darkMode }) => (
       </button>
     </div>
     <p className="flex gap-1 items-end text-[14px]">
-      <span className="text-[#48BB78] font-bold">{percent}</span>
+      <span className="font-bold" style={{ color: percentColor }}>
+        {percent}
+      </span>
       <span className="text-[#A0AEC0]">Since last month</span>
     </p>
   </div>
@@ -53,12 +55,13 @@ const Dashboard = () => {
           {/* header */}
           <Header name="Dashboard" />
           {/* card */}
-          <div className="flex flex-col md:flex-row justify-between pr-4">
+          <div className="flex justify-between pr-4">
             <Card
               title="today's money"
               image={Wallet}
               number="$53,897"
               percent="+3.48%"
+              percentColor="#48BB78"
               darkMode={darkMode}
             />
             <Card
@@ -66,6 +69,7 @@ const Dashboard = () => {
               image={Global}
               number="3,200"
               percent="+5.20%"
+              percentColor="#48BB78"
               darkMode={darkMode}
             />
             <Card
@@ -73,6 +77,7 @@ const Dashboard = () => {
               image={Document}
               number="+2,503"
               percent="-2.82%"
+              percentColor="#E53E3E"
               darkMode={darkMode}
             />
             <Card
@@ -80,6 +85,7 @@ const Dashboard = () => {
               image={Cart}
               number="$173,000"
               percent="+8.12%"
+              percentColor="#48BB78"
               darkMode={darkMode}
             />
           </div>

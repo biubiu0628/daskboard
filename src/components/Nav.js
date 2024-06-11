@@ -18,7 +18,7 @@ import Rocket from "../images/rocket.svg";
 import { Link, useLocation } from "react-router-dom";
 import { DarkModeContext } from "./DarkModeContext";
 
-const Button = ({ isActive, darkMode, image, imageActive, name, path }) => (
+const Button = ({ isActive, image, imageActive, name, path }) => (
   <Link
     to={path}
     className={`flex items-center px-4 gap-2 w-[220px] h-[54px] ${
@@ -38,11 +38,7 @@ const Button = ({ isActive, darkMode, image, imageActive, name, path }) => (
     </div>
     <p
       className={`${
-        isActive(path)
-          ? darkMode
-            ? "text-white"
-            : "text-black"
-          : "text-[#A0AEC0]"
+        isActive(path) ? "dark:text-white" : "text-[#A0AEC0] dark:text-white"
       } font-bold`}
     >
       {name}
@@ -75,7 +71,6 @@ const Nav = () => {
           {/* Dashboard */}
           <Button
             isActive={isActive}
-            darkMode={darkMode}
             image={HomeBlue}
             imageActive={Home}
             name="Dashboard"
@@ -84,7 +79,6 @@ const Nav = () => {
           {/* tables */}
           <Button
             isActive={isActive}
-            darkMode={darkMode}
             image={Stats}
             imageActive={StatsWhite}
             name="Tables"
@@ -93,7 +87,6 @@ const Nav = () => {
           {/* billing */}
           <Button
             isActive={isActive}
-            darkMode={darkMode}
             image={Card}
             imageActive={CardWhite}
             name="Billing"
@@ -102,7 +95,6 @@ const Nav = () => {
           {/* RTL */}
           <Button
             isActive={isActive}
-            darkMode={darkMode}
             image={Build}
             imageActive={BuildWhite}
             name="RTL"
