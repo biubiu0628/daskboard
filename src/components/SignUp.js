@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import Logo from "../images/Logo2.svg";
 import Box from "../images/box.svg";
 import User from "../images/user.svg";
 import LogoSignUp from "../images/signup.svg";
 import LogoSignIn from "../images/signin.svg";
 import FB from "../images/facebook.svg";
+import FBWhite from "../images/facebookWhite.svg";
 import Apple from "../images/apple.svg";
+import AppleWhite from "../images/appleWhite.svg";
 import Google from "../images/google.svg";
+import GoogleWhite from "../images/googleWhite.svg";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
+import { DarkModeContext } from "./DarkModeContext";
 
 const Page = ({ image, name }) => (
   <div className="flex text-[10px] font-bold text-white items-center uppercase tracking-wide gap-1">
@@ -19,8 +23,8 @@ const Page = ({ image, name }) => (
 
 const Button = ({ image }) => (
   <button
-    className="border-[1px] border-solid border-[#E2E8F0] rounded-lg 
-    w-[75px] h-[75px] flex justify-center items-center"
+    className="border-[1px] border-solid border-[#E2E8F0] dark:border-none dark:bg-[#1B254B] 
+    rounded-lg w-[75px] h-[75px] flex justify-center items-center "
   >
     <img src={image} alt="" />
   </button>
@@ -28,10 +32,10 @@ const Button = ({ image }) => (
 
 const Input = ({ name, placeholder, type }) => (
   <div>
-    <p className="text-[14px] text-[#2D3748] pl-1">{name}</p>
+    <p className="text-[14px] text-[#2D3748] dark:text-white pl-1">{name}</p>
     <input
-      className="w-[350px] h-[50px] px-4 border-solid border-[1px] 
-    border-[#E2E8F0] rounded-lg text-[14px] focus:outline-none"
+      className="w-[350px] h-[50px] px-4 border-solid border-[1px] border-[#E2E8F0] 
+      dark:border-none dark:bg-[#1B254B] dark:text-white rounded-lg text-[14px] focus:outline-none"
       placeholder={placeholder}
       type={type}
       required
@@ -40,8 +44,10 @@ const Input = ({ name, placeholder, type }) => (
 );
 
 const SignUp = () => {
+  const { darkMode } = useContext(DarkModeContext);
+
   return (
-    <div className="h-[1140px] flex flex-col">
+    <div className="h-[1140px] dark:bg-[#1B254B] flex flex-col">
       <div className="p-4 h-[1080px]">
         {/* header */}
         <div className="relative w-full h-[520px] bg-[url('./images/Image.svg')] bg-cover flex flex-col items-center gap-16">
@@ -59,7 +65,7 @@ const SignUp = () => {
                 <Page image={LogoSignIn} name="Sign In" />
               </Link>
             </div>
-            <button className="bg-white w-[150px] rounded-lg h-[35px] uppercase text-[#2D3748] text-[10px] font-bold ">
+            <button className="bg-white dark:bg-[#0B1437] w-[150px] rounded-lg h-[35px] uppercase text-[#2D3748] dark:text-white text-[10px] font-bold ">
               free download
             </button>
           </div>
@@ -72,17 +78,17 @@ const SignUp = () => {
           </p>
         </div>
         {/* sign up */}
-        <div className="absolute bottom-[-70px] left-1/2 translate-x-[-50%] w-[425.5px] h-[713.5px] bg-white rounded-2xl shadow">
+        <div className="absolute bottom-[-70px] left-1/2 translate-x-[-50%] w-[425.5px] h-[713.5px] bg-white dark:bg-[#111C44] rounded-2xl shadow">
           <div>
             {/* signup social */}
             <div className="flex flex-col items-center pt-10 pb-4">
-              <p className="text-[18px] font-bold text-[#2D3748]">
+              <p className="text-[18px] font-bold text-[#2D3748] dark:text-white">
                 Register with
               </p>
               <div className="flex gap-4 py-4">
-                <Button image={FB} />
-                <Button image={Apple} />
-                <Button image={Google} />
+                <Button image={darkMode ? FBWhite : FB} />
+                <Button image={darkMode ? AppleWhite : Apple} />
+                <Button image={darkMode ? GoogleWhite : Google} />
               </div>
               <p className="text-[18px] font-bold text-[#A0AEC0]">or</p>
             </div>
@@ -107,13 +113,13 @@ const SignUp = () => {
                 />
                 <label
                   for="toggle"
-                  class="relative flex h-[18px] w-[34px] cursor-pointer items-center rounded-full bg-[#E2E8F0] px-0.5
+                  class="relative flex h-[18px] w-[34px] cursor-pointer items-center rounded-full bg-[#E2E8F0] dark:bg-[#1B254B] px-0.5
             transition-colors before:h-[13px] before:w-[13px] before:rounded-full before:bg-white before:transition-transform 
             before:duration-300 peer-checked:bg-[#3182CE] peer-checked:before:translate-x-[16px]"
                 ></label>
-                <p className="text-[12px]">Remember me</p>
+                <p className="text-[12px] dark:text-white">Remember me</p>
               </div>
-              <button className="w-[350px] h-[45px] bg-[#2D3748] rounded-lg uppercase text-white text-[10px]">
+              <button className="w-[350px] h-[45px] bg-[#2D3748] dark:bg-[#3182CE] rounded-lg uppercase text-white text-[10px]">
                 sign up
               </button>
               <div>
@@ -123,7 +129,7 @@ const SignUp = () => {
                   </span>
                   <Link
                     to="/signin"
-                    className="text-gray-700 font-bold cursor-pointer"
+                    className="text-gray-700 dark:text-white font-bold cursor-pointer"
                   >
                     Sign in
                   </Link>

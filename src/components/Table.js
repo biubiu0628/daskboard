@@ -140,7 +140,7 @@ const Table = () => {
   const { darkMode } = useContext(DarkModeContext);
 
   return (
-    <div className="h-full relative bg-[#f7fafc]">
+    <div className="h-[1130px] relative bg-[#f7fafc] dark:bg-[#1B254B]">
       <img src={darkMode ? BgDark : Bg} alt="" />
       <div className="absolute top-0 grid grid-cols-[300px_1600px] tracking-wide">
         <Nav />

@@ -174,7 +174,7 @@ const Billing = () => {
                 darkMode
                   ? "bg-[url('./images/darkCredit.svg')]"
                   : "bg-[url('./images/credit.svg')]"
-              } text-white p-6 grid content-between`}
+              } text-white p-6 grid content-between bg-cover`}
             >
               <div className="flex justify-between text-[18px] font-bold items-center">
                 Argon x Chakra

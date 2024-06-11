@@ -45,20 +45,15 @@ const Dashboard = () => {
   const { darkMode } = useContext(DarkModeContext);
 
   return (
-    <div
-      className={`h-[1205px] relative ${
-        darkMode ? "bg-[#1B254B]" : "bg-[#f7fafc]"
-      }`}
-    >
+    <div className="h-[1205px] relative bg-[#f7fafc] dark:bg-[#1B254B]">
       <img src={darkMode ? BgDark : Bg} alt="" />
-      {/* <img src={Bg} alt="" /> */}
       <div className="absolute top-0 grid grid-cols-[300px_1600px] tracking-wide">
         <Nav />
         <div className="grid gap-y-10 py-4">
           {/* header */}
           <Header name="Dashboard" />
           {/* card */}
-          <div className="flex justify-between pr-4">
+          <div className="flex flex-col md:flex-row justify-between pr-4">
             <Card
               title="today's money"
               image={Wallet}
@@ -88,11 +83,13 @@ const Dashboard = () => {
               darkMode={darkMode}
             />
           </div>
-          <div className="grid grid-cols-[69%_30%] grid-rows-[491px_350px] w-full pr-4 gap-x-4 gap-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-[69%_30%] md:grid-rows-[491px_350px] w-full pr-4 gap-x-4 gap-y-4">
             {/* sales overview */}
             <div
               className={`${
-                darkMode ? "bg-[#111C44]" : "bg-[#151928]"
+                darkMode
+                  ? "bg-[#111C44]"
+                  : "bg-gradient-to-tr from-[#313860] to-[#151928]"
               } rounded-2xl p-4 grid`}
             >
               <p className="text-white pt-2">
