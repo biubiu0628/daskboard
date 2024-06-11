@@ -8,9 +8,10 @@ import Global from "../images/global.svg";
 import Document from "../images/document.svg";
 import Cart from "../images/cart.svg";
 import Graph from "../images/Graph.svg";
-import Chart from "../images/chart.svg";
+// import Chart from "../images/chart.svg";
 import Footer from "./Footer";
 import { DarkModeContext } from "./DarkModeContext";
+import ColumnChart from "./ColumnChart";
 
 const Card = ({ title, image, number, percent, darkMode, percentColor }) => (
   <div
@@ -127,7 +128,7 @@ const Dashboard = () => {
                   Total orders
                 </span>
               </p>
-              <img src={Chart} alt="" className="flex h-full " />
+              <ColumnChart />
             </div>
             {/* page visits */}
             <div
