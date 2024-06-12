@@ -1,19 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
 import Chart from "react-apexcharts";
+import { DarkModeContext } from "./DarkModeContext";
 
 const ColumnChart = () => {
+  const { darkMode } = useContext(DarkModeContext);
+
   const options = {
     chart: {
       id: "column-chart",
+      toolbar: {
+        show: false,
+      },
     },
     xaxis: {
       categories: ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      axisTicks: {
+        show: false,
+      },
+      labels: {
+        offsetY: 4,
+        style: {
+          colors: "#A0AEC0",
+          fontSize: 12,
+          fontWeight: "bold",
+          fontFamily: "Helvetica",
+        },
+      },
+      axisBorder: { show: false },
     },
     yaxis: {
       min: 0,
       max: 30,
       tickAmount: 3,
-      colorText: "A0AEC0",
+      labels: {
+        style: {
+          colors: "#A0AEC0",
+          fontSize: 12,
+          fontWeight: "bold",
+          fontFamily: "Helvetica",
+        },
+      },
     },
     plotOptions: {
       bar: {
@@ -23,6 +49,11 @@ const ColumnChart = () => {
     },
     dataLabels: {
       enabled: false,
+    },
+    grid: {
+      show: true,
+      borderColor: darkMode ? "#4A5568" : "#E2E8F0",
+      strokeDashArray: 4,
     },
     colors: ["#ED8936"],
   };

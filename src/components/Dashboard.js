@@ -7,11 +7,10 @@ import Wallet from "../images/wallet.svg";
 import Global from "../images/global.svg";
 import Document from "../images/document.svg";
 import Cart from "../images/cart.svg";
-import Graph from "../images/Graph.svg";
-// import Chart from "../images/chart.svg";
 import Footer from "./Footer";
 import { DarkModeContext } from "./DarkModeContext";
 import ColumnChart from "./ColumnChart";
+import AreaChart from "./AreaChart";
 
 const Card = ({ title, image, number, percent, darkMode, percentColor }) => (
   <div
@@ -48,11 +47,11 @@ const Dashboard = () => {
   const { darkMode } = useContext(DarkModeContext);
 
   return (
-    <div className="h-[1205px] relative bg-[#f7fafc] dark:bg-[#1B254B]">
+    <div className="h-[1190px] relative bg-[#f7fafc] dark:bg-[#1B254B]">
       <img src={darkMode ? BgDark : Bg} alt="" />
       <div className="absolute top-0 grid grid-cols-[300px_1600px] tracking-wide">
         <Nav />
-        <div className="grid gap-y-10 py-4">
+        <div className="grid gap-y-8 py-4">
           {/* header */}
           <Header name="Dashboard" />
           {/* card */}
@@ -107,7 +106,7 @@ const Dashboard = () => {
                   <span>in 2021</span>
                 </p>
               </p>
-              <img src={Graph} alt="" className="flex h-full " />
+              <AreaChart />
             </div>
             {/* total orders */}
             <div
